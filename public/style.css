@@ -1,0 +1,38 @@
+/* Generel styling for listen */
+ul#usersList {
+    list-style: none; /* Fjerner punkttegn */
+    padding: 0;
+}
+
+/* Styling for hvert listeelement */
+ul#usersList li {
+    background-color: white;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for spans inde i listeelementerne */
+ul#usersList li span {
+    display: block; /* Gør hver span til en blok for at få dem på separate linjer */
+    margin-bottom: 5px;
+}
+
+/* Specifik styling for forskellige spans */
+.user-id {
+    font-weight: bold;
+}
+
+.user-name {
+    color: #333;
+}
+
+.user-email {
+    color: #007bff;
+}
+
+.user-created, .user-updated {
+    color: #666;
+    font-size: 0.9em;
+}

@@ -1,19 +1,24 @@
-const express = require('express');
-const app = express();
+document.addEventListener('DOMContentLoaded', function () {
+    fetch('/api/users')
+        .then(response => response.json())
+        .then(users => {
+            const list = document.getElementById('usersList');
+            users.forEach(user => {
+                const listItem = document.createElement('li');
 
-const port = 3000;
-const { User } = require('./models');
+                // Opret spans for hver brugerattribut
+                listItem.innerHTML = `
+                    <span class="user-id">ID: ${user.userId}</span>
+                    <span class="user-name">Name: ${user.userName}</span>
+                    <span class="user-email">Email: ${user.userEmail}</span>
+                    <span class="user-created">Created: ${user.createdAt}</span>
+                    <span class="user-updated">Updated: ${user.updatedAt}</span>
+                `;
 
-app.get('/', async (req, res) => {
-    const users = await User.findAll();
-    let table = '<table><tr><th>Name</th><th>Email</th></tr>';
-    users.forEach(user => {
-        table += `<tr><td>${user.name}</td><td>${user.email}</td></tr>`;
-    });
-    table += '</table>';
-    res.send(table);
-});
-
-app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
+                list.appendChild(listItem);
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 });

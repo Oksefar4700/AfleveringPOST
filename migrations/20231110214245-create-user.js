@@ -1,18 +1,22 @@
 'use strict';
-/** @type {import('sequelize-cli').Migration} */
+
+// Eksporterer et objekt med to forskellige funktion "up" og "down"
 module.exports = {
+
+  //"Up" funktionen bruges til, at oprette tabellen vores tabel users i vores database.
   async up(queryInterface, Sequelize) {
+    //Bruger queryinterface til, at oprette en ny tabel.
     await queryInterface.createTable('Users', {
-      id: {
+      userId: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
+      userName: {
         type: Sequelize.STRING
       },
-      email: {
+      userEmail: {
         type: Sequelize.STRING
       },
       createdAt: {
